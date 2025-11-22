@@ -1,12 +1,5 @@
 FROM nvcr.io/nvidia/pytorch:23.04-py3
 
-ENV http_proxy=http://137.153.170.55:10080/ \
-    https_proxy=http://137.153.170.55:10080/ \
-    HTTP_PROXY=http://137.153.170.55:10080/ \
-    HTTPS_PROXY=http://137.153.170.55:10080/
-    
-ENV DEBIAN_FRONTEND=noninteractive
-
 RUN apt-get update && \
 apt-get install -y --no-install-recommends software-properties-common && \
 add-apt-repository ppa:deadsnakes/ppa -y && \
@@ -62,8 +55,3 @@ RUN pip install mauve-text
 RUN pip install numpy==1.25.0
 RUN pip uninstall -y transformer-engine
 RUN pip uninstall -y apex
-
-# ENV http_proxy= \
-#     https_proxy= \
-#     HTTP_PROXY= \
-#     HTTPS_PROXY=
